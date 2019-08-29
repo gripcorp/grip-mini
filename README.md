@@ -169,6 +169,20 @@ public class HmacShaSignature {
 		mac.init(signingKey);
 		return toHexString(mac.doFinal(data.getBytes()));
 	}
+	
+	public static void main(String[] args) throws InvalidKeyException, SignatureException, NoSuchAlgorithmException {
+		String secureKey = "35q97RxB6eGPLWBB";	//개발용 테스트키 
+		String serviceId = "svcId";	//서비스ID
+		long timestamp = System.currentTimeMillis();
+
+		String data = String.format("%s;%d", serviceId, timestamp);
+		
+		String fingerprint = HmacShaSignature.digest(data, secureKey);
+		System.out.println("fingerprint : " + fingerprint + " timestamp : " + timestamp);
+		
+		//fingerprint : 8a194e2a93ba5b7e149a647f88ff524974b5d942 timestamp : 1567066803336
+	}
+	
 }
 
 ```
@@ -227,6 +241,28 @@ public class AESCryptor {
 		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
+	}
+	
+		//예제
+	public static void main(String[] args) throws JsonProcessingException {
+		String secureKey = "35q97RxB6eGPLWBB";
+
+		Map<String,Object> param = Maps.newHashMap();
+		param.put("userId", "testuserId");
+		param.put("nickname", "테스트사용자");
+		param.put("host", "snsform.co.kr");
+		param.put("serviceId", "svnId");
+		param.put("timestamp", System.currentTimeMillis());
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		String data = mapper.writeValueAsString(param);
+		System.out.println(data);
+		//{"nickname":"테스트사용자","host":"snsform.co.kr","serviceId":"svnId","userId":"testuserId","timestamp":1567067294714}
+
+		String sessionKey = AESCryptor.encrypt(data, secureKey);
+		System.out.println(sessionKey);
+		//NL1b1VMNbJ9XyhEh2fY/ZR0i/r6E3YFlQNAgayCq+5vqtWGrXzYt3dNjB1n6+Z1J8/BIgDEmT7FbYeQ6oRlVqVDRyUY24UHx0Ti36xcI+UId/KC3LkTWbNDyFqt+9EIfyT8snRdrN3n+GIgVjdDwz/fQPOw9O8hBQa1/gn49Z60=
 	}
 }
 ```
