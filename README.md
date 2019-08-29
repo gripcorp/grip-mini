@@ -273,7 +273,8 @@ public class AESCryptor {
 {
 	"userId":"testUserId",
 	"nickname:"테스트사용자",
-	"host" : "https://snsform.co.kr",
+	"host" : "snsform.co.kr",
+	"serviceId" : "svcId",
 	"timestamp": 1566724286763
 }
 ```
