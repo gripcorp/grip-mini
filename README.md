@@ -116,6 +116,8 @@ reservationId 을 이용한 초기화와 몇몇 기능을 제공함.
 
 예제코드
 ```html
+
+<script src="http://dev-eapi.grip.show/js/grip.mini.min.js"></script>
 <div id="embed" style=""></div>
 
 var mini = GripMini({
