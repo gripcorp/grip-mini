@@ -125,7 +125,10 @@ var mini = GripMini({
 	, reservationId : reservationId
 	, sessionKey: sessionKey
 	, serviceId : "serviceId"
-	, type : "float"
+	, type : "float",
+	, couponCallback : function(data){
+	//coupon 받은 정보에 대한 콜백 로직
+	}
     });
 ```
 
