@@ -114,6 +114,21 @@ frameborder="0" allowfullscreen=true style="width: 320px; height: 500px;" scroll
 2. javascript를 사용하여 적용하기 
 reservationId 을 이용한 초기화와 몇몇 기능을 제공함.
 
+파라메터 설명 
+
+| 파라메터 이름    | 타입           | 필수    | 설명        | 비고            |
+| :-----------  | :------------ |:-----------|------------ | --------------- |
+| reservationId | String        | Y    | 예약 ID| Path에 존재함 |
+| serviceId     | String        | Y    | 발급된 서비스 아이디| |
+| sessionKey      | String        | Y    | 암호화된 로그인 정보 | |
+| type      | String        | N    | mini의 UI 타입 | 기본 float |
+| z-index      | Int        | N    | 레이어 z-index 값 | |
+| couponCallback | function   | N    | 쿠폰 받기 콜백 | |
+| loginCallback  | function   | N    | login 필요 콜백 | |
+| confirmCellular | boolean   | N    | 셀루러 사용시 확인 기능 사용 여부 | 기본 false |
+
+
+
 예제코드
 ```html
 
