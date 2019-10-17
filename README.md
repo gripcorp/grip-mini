@@ -132,7 +132,7 @@ reservationId 을 이용한 초기화와 몇몇 기능을 제공함.
 예제코드
 ```html
 
-<script src="https://dev-resource.grip.show/js/grip.mini.min.js"></script><!-- 용 리소스 주소 -->
+<script src="https://dev-resource.grip.show/js/grip.mini.min.js"></script><!-- 개발용 리소스 주소 -->
 <script src="https://resource.grip.show/js/grip.mini.min.js"></script> <!-- real용 리소스 주소 -->
 <div id="embed" style=""></div>
 
