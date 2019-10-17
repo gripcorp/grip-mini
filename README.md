@@ -58,7 +58,7 @@ HMAC 형태의 api 인증을 진행하며
 - Path : /svc/reservations/{reservationId}
 - Method : GET
 
-### 예약의 목적
+### 목적
 ```
 reservationId을 통한 조회
 ```
@@ -75,7 +75,7 @@ reservationId을 통한 조회
 - Path : /svc/reservations/{reservationId}
 - Method : DELETE
 
-### 예약의 목적
+### 목적
 ```
 reservationId를 이용하여 예약 삭제(취소)
 ```
