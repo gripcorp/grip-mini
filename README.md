@@ -81,9 +81,9 @@ reservationId을 통한 조회
     "contentIds": [
       "Dfa3213E23"
     ],
-    "accUserCount": 2
+    "accUserCount": 2,
     "startedAt": "2019-10-21T03:20:51.623Z",
-    "endedAt": "2019-10-21T03:20:51.623Z",
+    "endedAt": "2019-10-21T03:20:51.623Z"
   },
   "createAt": "2019-10-21T03:20:51.623Z"
 }
