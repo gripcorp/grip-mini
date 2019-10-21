@@ -70,6 +70,26 @@ reservationId을 통한 조회
 | serviceId     | String        | Y    | 발급된 서비스 아이디| |
 | userCode      | String        | Y    | 조회할 그립사용자의 이용자코드 | |
 
+### 응답
+
+```json
+{
+  "createAt": "2019-10-21T03:20:51.623Z",
+  "embedUrl": "https://play.grip.show/embed/asdkuj123",
+  "reservationId": "Dfa3213E23",
+  "statistics": {
+    "contentIds": [
+      "Dfa3213E23"
+    ],
+    "endedAt": "2019-10-21T03:20:51.623Z",
+    "reservationId": "Dfa3213E23Dfa3213E23",
+    "startedAt": "2019-10-21T03:20:51.623Z"
+  },
+  "userId": "geAda33"
+}
+
+```
+
 ## 3. 예약 삭제
 
 - Path : /svc/reservations/{reservationId}
