@@ -74,18 +74,17 @@ reservationId을 통한 조회
 
 ```json
 {
-  "createAt": "2019-10-21T03:20:51.623Z",
-  "embedUrl": "https://play.grip.show/embed/asdkuj123",
+  "userId": "geAda33",
+  "embedUrl": "https://play.grip.show/embed/Dfa3213E23Dfa3213E23",
   "reservationId": "Dfa3213E23",
   "statistics": {
     "contentIds": [
       "Dfa3213E23"
     ],
+    "startedAt": "2019-10-21T03:20:51.623Z",
     "endedAt": "2019-10-21T03:20:51.623Z",
-    "reservationId": "Dfa3213E23Dfa3213E23",
-    "startedAt": "2019-10-21T03:20:51.623Z"
   },
-  "userId": "geAda33"
+  "createAt": "2019-10-21T03:20:51.623Z"
 }
 
 ```
