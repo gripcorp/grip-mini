@@ -81,6 +81,7 @@ reservationId을 통한 조회
     "contentIds": [
       "Dfa3213E23"
     ],
+    "accUserCount": 2
     "startedAt": "2019-10-21T03:20:51.623Z",
     "endedAt": "2019-10-21T03:20:51.623Z",
   },
@@ -88,6 +89,11 @@ reservationId을 통한 조회
 }
 
 ```
+```
+statistic의 경우 예약과 관련된 시작 및 종료 시간 및 간단한 통계정보가 내려가며
+예약 종료 시간 이후 부터 유효한 값이 내려간다
+```
+
 
 ## 3. 예약 삭제
 
