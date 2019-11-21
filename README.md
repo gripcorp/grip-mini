@@ -188,6 +188,8 @@ var mini = GripMini({
 ```
 서비스용으로 제공된 secureKey를 이용하여 serviceId와 timestamp를 이용하여
 fingerprint 전달하면서 상호 검증을 진행함 
+
+* fingerprint값은 검증시 10분의 만료시간을 가지며 만료시 재생성해주시기 바랍니다. *
 ```
 
 HmacSignature 클래스 예제
@@ -237,7 +239,7 @@ key에는 SecureKey를 String 그대로 사용하여 전달하여 나온 결과�
 이렇게 만들어진 Fingerprint 와 timestamp는 API 호출시에 아래와 같은 헤더값으로 입력하여 요청하시면 됩니다.
 
 Name : X-Fingerprint
-Value : fingerprint값 
+Value : fingerprint값 (10분의 만료시간)
 
 Name : X-Fingerprint-Timestamp
 Value : fingerprint 만들때 사용된 timestamp 
@@ -245,10 +247,11 @@ Value : fingerprint 만들때 사용된 timestamp
 
 ```java
 HttpPost request = new HttpPost(url);
-request.setHeader("X-Fingerprint", fingerprint);
+request.setHeader("X-Fingerprint", fingerprint);	
 request.setHeader("X-Fingerprint-Timestamp", timestamp);
 ```
 *JAVA로 가이드 해드리기는 했으나 곧 library 형태로 배포하거나 다른 개발언어 요청해주시면 추가 가이드 해드리도록 하겠습니다.*
+
 
 # Appendix #2
 ## 사용자 sessionKey 생성 방법
