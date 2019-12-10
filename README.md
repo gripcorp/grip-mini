@@ -150,6 +150,8 @@ reservationId 을 이용한 초기화와 몇몇 기능을 제공함.
 | z-index      | Int        | N    | 레이어 z-index 값 | |
 | couponCallback | function   | N    | 쿠폰 받기 콜백 | |
 | loginCallback  | function   | N    | login 필요 콜백 | |
+| onShare  | function   | N    | 공유버튼 콜백 | |
+| onPlayEnd  | function   | N    | 재생 종료 콜백 | |
 | confirmCellular | boolean   | N    | 셀루러 사용시 확인 기능 사용 여부 | 기본 false |
 
 
