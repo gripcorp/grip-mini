@@ -264,7 +264,7 @@ request.setHeader("X-Fingerprint-Timestamp", timestamp);
 ## 사용자 sessionKey 생성 방법
 ```
 사용자가 채팅을 하기위하여 로그인과 유사한 sessionKey 생성 가이드 입니다. 
-sessionKey를 
+
 ```
 
 AESCryptor 예제 코드
