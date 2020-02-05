@@ -74,9 +74,14 @@ reservationId을 통한 조회
 
 ```json
 {
-  "userId": "geAda33",
+  "userCode": "geAda33",
   "embedUrl": "https://play.grip.show/embed/Dfa3213E23Dfa3213E23",
   "reservationId": "Dfa3213E23",
+  "title":"예약 타이틀",
+  "description": "예약 설명",
+  "coverUrl":"https://play.grip.show/images/test.jpg",
+  "start" : "2019-10-21 14:30:00",
+  "end" : "2019-10-21 15:30:00",
   "statistics": {
     "contentIds": [
       "Dfa3213E23"
