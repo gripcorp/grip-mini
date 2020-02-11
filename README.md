@@ -141,7 +141,7 @@ iframe의 비율을 3:4 혹은 9:16 비율로 지정하여 디자인 가이드�
 frameborder="0" allowfullscreen=true style="width: 320px; height: 500px;" scrolling="no"></iframe> 
 ```
 
-2. javascript를 사용하여 적용하기 
+### 3. javascript를 사용하여 적용하기 
 reservationId 을 이용한 초기화와 몇몇 기능을 제공함.
 
 파라메터 설명 
