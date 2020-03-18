@@ -281,6 +281,13 @@ public class AESCryptor {
 			throw new RuntimeException(ex);
 		}
 	}
+	public static String decrypt(String source, String key) {
+		try {
+			return new String(decrypt(Base64.decodeBase64(source.getBytes()), key.getBytes()), "UTF-8");
+		} catch (UnsupportedEncodingException ex) {
+			throw new RuntimeException(ex);
+		}
+	}
 
 	private static byte[] encrypt(byte[] source, byte[] key) {
 		AlgorithmParameterSpec ivSpec = new IvParameterSpec(IV);
@@ -291,6 +298,18 @@ public class AESCryptor {
 			cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 			cipher.init(Cipher.ENCRYPT_MODE, newKey, ivSpec);
 
+			return cipher.doFinal(source);
+		} catch (Exception ex) {
+			throw new RuntimeException(ex);
+		}
+	}
+	private static byte[] decrypt(byte[] source, byte[] key) {
+		AlgorithmParameterSpec ivSpec = new IvParameterSpec(IV);
+		SecretKeySpec newKey = new SecretKeySpec(key, "AES");
+
+		try {
+			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+			cipher.init(Cipher.DECRYPT_MODE, newKey, ivSpec);
 			return cipher.doFinal(source);
 		} catch (Exception ex) {
 			throw new RuntimeException(ex);
