@@ -82,6 +82,7 @@ reservationId을 통한 조회
   "coverUrl":"https://play.grip.show/images/test.jpg",
   "start" : "2019-10-21 14:30:00",
   "end" : "2019-10-21 15:30:00",
+  "state" : 0
   "statistics": {
     "contentIds": [
       "Dfa3213E23"
