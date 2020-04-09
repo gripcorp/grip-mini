@@ -82,7 +82,7 @@ reservationId을 통한 조회
   "coverUrl":"https://play.grip.show/images/test.jpg",
   "start" : "2019-10-21 14:30:00",
   "end" : "2019-10-21 15:30:00",
-  "state" : 0
+  "state" : 0,	
   "statistics": {
     "contentIds": [
       "Dfa3213E23"
@@ -99,7 +99,14 @@ reservationId을 통한 조회
 statistic의 경우 예약과 관련된 시작 및 종료 시간 및 간단한 통계정보가 내려가며
 예약 종료 시간 이후 부터 유효한 값이 내려간다
 ```
+### 예약 상태값
 
+| 상태값    | 설명 |
+| :-----------  | :------------ |
+| 0 | 대기 상태 |
+| 1 | 라이브 |
+| 2 | <s>미사용</s> |
+| 3 | Liv VOD |
 
 ## 3. 예약 삭제
 
