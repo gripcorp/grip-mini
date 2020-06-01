@@ -1,4 +1,4 @@
-Grip Mini API Guide
+Grip Mini API Guide v2 (작업중)
 ======================
 # 사전 정보
 - secureKey : sessionKey, API 인증을 위한 fingerprint
@@ -159,14 +159,61 @@ reservationId 을 이용한 초기화와 몇몇 기능을 제공함.
 | reservationId | String        | Y    | 예약 ID| Path에 존재함 |
 | serviceId     | String        | Y    | 발급된 서비스 아이디| |
 | sessionKey      | String        | Y    | 암호화된 로그인 정보 | |
-| type      | String        | N    | mini의 UI 타입 | 기본 float |
+| type      | String        | N    | mini의 UI 타입 | 기본 float, 하단의 Mini의 UI타입 참조 |
 | z-index      | Int        | N    | 레이어 z-index 값 | |
-| couponCallback | function   | N    | 쿠폰 받기 콜백 | |
-| loginCallback  | function   | N    | login 필요 콜백 | |
-| onShare  | function   | N    | 공유버튼 콜백 | |
-| onPlayEnd  | function   | N    | 재생 종료 콜백 | |
 | confirmCellular | boolean   | N    | 셀루러 사용시 확인 기능 사용 여부 | 기본 false |
+| couponCallback | function   | N    | 쿠폰 받기 콜백 | Deprecated | 
+| loginCallback  | function   | N    | login 필요 콜백 | Deprecated |
+| onShare  | function   | N    | 공유버튼 콜백 | Deprecated |
+| onPlayEnd  | function   | N    | 재생 종료 콜백 | Deprecated |
 
+
+mini의 UI 타입
+
+| type  | 설명 |
+|----|----|
+| none | floating 형태를 사용하지 않음 |
+|float | 우측 하단의 floting type |
+|top | 상단 고정형 |
+
+
+콜백들은 하단의 별도의 형태로 변경되며 이전 사용 메소드는 v2에서는 호환이 가능하나 아래와 같은 방법을 이용해주세요.
+
+
+| 콜백 이벤트명    | 파라메터      | return |  설명        | 비고            |
+| :-----------  | :------------ |:-----------|:-----------|--------------- |
+| needLogin  |    | login 필요 | |  |
+| share  | url  | 공유버튼 클릭 | |  |
+| playEnd  |    | 재생 종료  | |  |
+| receiveCoupon | coupon, user | 쿠폰받음 | | 초기화시에 전달된 쿠폰 정보 혹은 그립으로 받은 쿠폰 정보 |
+| clickProduct | product, user | 상품 클릭 | | 클릭한 상품 정보 |
+| clickCart | product, user | 상품의 카트아이콘 클릭 | | 클릭한 상품 정보 |
+| clickShop | user | 상점 아이콘 클릭  | 표시할 상품 목록 정보 |  |
+
+
+* 상품 목록용 상품 정보
+
+| 파라메터 이름    | 타입           | 필수    	| 설명        | 비고            |
+| :-----------  | :------------ |:-----------|------------ | --------------- |
+| productId 	| String  	| Y    | 클라이언트사 상품 ID 	|  |
+| name     	| String	| Y    | 상품명		| |
+| basePrice     | Number 	| Y    | 상품 원본 표시 가격 | |
+| salePrice     | Number  	| Y    | 상품 판매 표시 가격 | |
+| stock      	| Number  	|  N   | 재고 숫자 		| 없는경우 soldout 처리가 자동으로 되지 않음 |
+| soldout      	| Boolean 	| N    | 품절 여부 		| 없는경우 stock이 0인경우 자동 품절 처리 |
+| thumbImageUrl | URL     	| Y    | 상품 대표 이미지    | |
+| detailUrl 	| URL     	| N    | 상품 목록 클릭시 이동할 경로 | 콜백에서 처리하거나 detailUrl 은 존재해야함 |
+| cartUrl 	| URL     	| N    | 상품 목록 카트 클릭시 이동할 경로 | 동작 형태는 detailUrl과 같으며 없는경우 detailUrl 처럼 동작됨 |
+
+* 쿠폰 정보
+
+| 파라메터 이름    | 타입           | 필수    	| 설명        | 비고            |
+| :-----------  | :------------ |:-----------|------------ | --------------- |
+| couponId 	| String  	| Y    | 클라이언트사 쿠폰 ID 	|  |
+| type     	| Integer	| Y    | 쿠폰의 타입 	| 하단의 타입 참조|
+| title     	| String 	| Y    | 쿠폰 타이틀 | |
+| desc     	| String  	| Y    | 쿠폰 금액이나 설명 | |
+| duration     	| Number  	|  N   | 지급 누적시간  시간 | 초단위 값, type이 누적시간인 경우 필수   |
 
 
 예제코드
@@ -182,19 +229,53 @@ var mini = GripMini({
 	, sessionKey: sessionKey
 	, serviceId : "serviceId"
 	, type : "float",
-	, couponCallback : function(data){
-	//coupon 받은 정보에 대한 콜백 로직
-	}
+	, coupon : [{
+		couponId: "coupon001",  //클라이언트사쿠폰 아이디
+		type : 1,   // 1 : 입장쿠폰, 2 : 누적시간 쿠폰
+		title : "라이브 입장 쿠폰",     //쿠폰 타이틀
+		desc : "2500원 할인",       //쿠폰 금액이나 설명을 위한 정보
+		duration : 600,     //누적시간 쿠폰 발급 시간, 초 단위
+     	}]
     });
+
+
+// 상점 아이콘 클릭
+mini.on("clickShop", function(){
+    //상점 목록에 표현할 상품 목록 반환
+    return [{
+        productId: "test01",  //클라이언트사 상품 아이디
+        name:"테스트 상품",
+        basePrice : 12000,
+        salePrice : 8000,   //basePrice와 같거나 없으면 미노출
+        stock : 120,
+        soldout : false, //optional, 없는경우 stock 기준으로 0의 경우 soldout 표시
+        thumbImageUrl : "https://api.gripshow/images/test.jpg",
+        detailUrl : "https://product.grip.show/prd/test_product?ref=tester",
+        cartUrl : "https://cart.grip.show/add/test_product?user=tester", //optional 
+    }];
+});
+
+
+mini.on("clickProduct", function(product, user){
+    //product : 선택한 상품 정보 전달
+    return true;
+});
+
+mini.on("clickCart", function(product, user){
+    //product : 선택한 상품 정보 전달
+    return true;
+});
+
+
+// 해당 사용자에게 제공 가능한 쿠폰
+mini.on("receiveCoupon", function(coupon, user){
+    //coupon : 전달한 쿠폰의 정보 그대로 반환
+    //받는 대상자의 사용자 정보 전달
+});
+
 ```
 
-화면에서 재생화면이 사라질 경우 동작 형태 
 
-| type  | 설명 |
-|----|----|
-| none | floating 형태를 사용하지 않음 |
-|float | 우측 하단의 floting type |
-|top | 상단 고정형 |
 
 
 
