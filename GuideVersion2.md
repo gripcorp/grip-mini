@@ -440,3 +440,13 @@ public class AESCryptor {
 	"timestamp": 1566724286763
 }
 ```
+사용자 정보
+| 파라메터 이름    | 타입           | 필수    | 설명        | 비고            |
+| :-----------  | :------------ |:-----------|------------ | --------------- |
+| userId 	| String        | N    		| 클라이언트사 식별용 ID | 실제 아이디보다 식별가능한 유니크ID |
+| nickname    	 | String        | N   		| 채팅에 사용될 닉네임 | 개인정보 관련 마스킹|
+| host      	| String        | Y		| 호출 페이지의 host 도메인 | |
+| serviceId      | String        | Y   		| 발급된 서비스 ID | |
+| timestamp      | Long        | Y    		| 해당 sessionKey 가 생성된 timestamp | |
+
+* userId, nickname 이 비어있는경우 Guest 로 로그인 처리됨 
