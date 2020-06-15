@@ -19,7 +19,16 @@ var mini = GripMini({
 	, reservationId : reservationId
 	, sessionKey: sessionKey
 	, serviceId : "serviceId"
-	, type : "float",
+    
+	, floating : {
+        type : "float",
+        options : {
+            width : 100,
+            height: 150,
+            bottom : 100,
+            right : 10
+        }
+    }
 	, coupon : [{
 		couponId: "coupon001",  //클라이언트사쿠폰 아이디
 		type : "join",   // "join" : 입장쿠폰, "duration" : 누적시간 쿠폰
@@ -68,16 +77,39 @@ mini.on("coupon", function(coupon){
 
 ###### GripMini 초기화 옵션 파라메터 
 
-| 파라메터명      | 타입    | 필수여부 | 비고                               |
-| --------------- | ------- | -------- | ---------------------------------- |
-| parentId        | String  | Y        | 플레이어가 embed될 element ID      |
-| serviceId       | String  | Y        | 발급된 serviceId                   |
-| sessionKey      | String  | N        | 로그인 사용자 sessionKey           |
-| type            | String  | N        | 기본 float                         |
-| confirmCellular | Boolean | N        | 3G/LTE 데이터 사용 확인 창 이용    |
-| productCount    | Integer | N (Y)    | **상품 목록 기능 사용시 필수**     |
-| z-index         | Integer | N        | 기본 10000                         |
-| coupon          | List    | N        | 쿠폰 데이터, 쿠폰 기능 사용시 필수 |
+| 파라메터명      | 타입    | 필수여부 | 비고                                   |
+| --------------- | ------- | -------- | -------------------------------------- |
+| parentId        | String  | Y        | 플레이어가 embed될 element ID          |
+| serviceId       | String  | Y        | 발급된 serviceId                       |
+| sessionKey      | String  | N        | 로그인 사용자 sessionKey               |
+| type            | String  | N        | 기본 float                             |
+| confirmCellular | Boolean | N        | 3G/LTE 데이터 사용 확인 창 이용        |
+| productCount    | Integer | N (Y)    | **상품 목록 기능 사용시 필수**         |
+| z-index         | Integer | N        | 기본 10000                             |
+| coupon          | List    | N        | 쿠폰 데이터, 쿠폰 기능 사용시 필수     |
+| floating        | Map     | N        | 플로팅 뷰 이용시 설정 , 하단 설명 참조 |
+
+
+
+
+
+###### floating 옵션 
+
+floating 은 화면을 벗어났을때 표현하는 방법 선택 할 수 있는 설정입니다.
+
+type 은 float, top 이 존재하며 float는 우측 하단에 작은 버전 top 은 상단에 일부를 고정하는 기능입니다.
+
+크기 및 위치에 대한 옵션을 오버라이드 가능하며 지원가능한 옵션은 하단의 표를 참조하시면됩니다.
+
+
+
+| 옵션명 | 타입    | 비고                     |
+| ------ | ------- | ------------------------ |
+| width  | Integer | float의 작은 화면의 넓이 |
+| height | Integer | float의 작은 화면의 높이 |
+| bottom | Integer | float의 하단 여백        |
+| right  | Integer | float의 우측 여백        |
+| height | Integer | top의 높이               |
 
 
 
