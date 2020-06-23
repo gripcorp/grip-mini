@@ -26,7 +26,8 @@ var mini = GripMini({
             width : 100,
             height: 150,
             bottom : 100,
-            right : 10
+            right : 10,
+            "z-index" : 100
         }
     }
 	, coupon : [{
@@ -70,6 +71,9 @@ mini.on("coupon", function(coupon){
     //coupon : 전달한 쿠폰의 정보 그대로 반환
     return true;
 });
+    
+mini.pause();	//영상 일시 정지 
+mini.resume();	//영상 다시 재생
 </script>
 ```
 
@@ -88,6 +92,8 @@ mini.on("coupon", function(coupon){
 | z-index         | Integer | N        | 기본 10000                             |
 | coupon          | List    | N        | 쿠폰 데이터, 쿠폰 기능 사용시 필수     |
 | floating        | Map     | N        | 플로팅 뷰 이용시 설정 , 하단 설명 참조 |
+| muted           | Boolean | N        | 음소거 상태 재생 여부, 기본값 true     |
+| share           | Boolean | N        | 공유버튼 사용 여부, 기본값 true        |
 
 
 
@@ -103,13 +109,14 @@ type 은 float, top 이 존재하며 float는 우측 하단에 작은 버전 top
 
 
 
-| 옵션명 | 타입    | 비고                     |
-| ------ | ------- | ------------------------ |
-| width  | Integer | float의 작은 화면의 넓이 |
-| height | Integer | float의 작은 화면의 높이 |
-| bottom | Integer | float의 하단 여백        |
-| right  | Integer | float의 우측 여백        |
-| height | Integer | top의 높이               |
+| 옵션명  | 타입    | 비고                                                    |
+| ------- | ------- | ------------------------------------------------------- |
+| width   | Integer | float의 작은 화면의 넓이                                |
+| height  | Integer | float의 작은 화면의 높이                                |
+| bottom  | Integer | float의 하단 여백                                       |
+| right   | Integer | float의 우측 여백                                       |
+| height  | Integer | top의 높이                                              |
+| z-index | Integer | z-index값, 없는경우 mini의 z-index값 사용, 기본값 10000 |
 
 
 
@@ -122,6 +129,17 @@ type 은 float, top 이 존재하며 float는 우측 하단에 작은 버전 top
 | title      | String  | Y        | 쿠폰명 예) 라이브 입장 쿠폰                |
 | desc       | String  | Y        | 금액이나 설명 정보 예) 2500원 할인         |
 | duration   | Integer | N(Y)     | duration 타입 사용시 필수                  |
+
+
+
+#### 지원하는 메소드 목록
+
+미니에서 제공하는 메소드(영상 제어등)
+
+| 콜백이름 | 목적           | 비고 |
+| -------- | -------------- | ---- |
+| pause    | 영상 일시 정지 |      |
+| resume   | 영상 다시 재생 |      |
 
 
 
