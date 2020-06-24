@@ -94,6 +94,7 @@ mini.resume();	//영상 다시 재생
 | floating        | Map     | N        | 플로팅 뷰 이용시 설정 , 하단 설명 참조 |
 | muted           | Boolean | N        | 음소거 상태 재생 여부, 기본값 true     |
 | share           | Boolean | N        | 공유버튼 사용 여부, 기본값 true        |
+| messageCount    | Integer | N        | 메시지 유지수, 기본값 300, 최대 500    |
 
 
 
