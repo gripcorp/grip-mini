@@ -34,7 +34,8 @@ var mini = GripMini({
 		couponId: "coupon001",  //클라이언트사쿠폰 아이디
 		type : "join",   // "join" : 입장쿠폰, "duration" : 누적시간 쿠폰
 		title : "라이브 입장 쿠폰",     //쿠폰 타이틀
-		desc : "2500원 할인",       //쿠폰 금액이나 설명을 위한 정보
+		price : "2500원 할인",       //쿠폰 금액이나 설명을 위한 정보
+		desc :"2만원 이상 사용가능",
 		duration : 600,     //누적시간 쿠폰 발급 시간, 초 단위
      	}]
     
