@@ -109,6 +109,7 @@ statistic의 경우 예약과 관련된 시작 및 종료 시간 및 간단한 �
 
 - Path : /svc/reservations/{reservationId}
 - Method : PATCH
+- ContentType : application/json;charset=UTF-8
 
 
 
