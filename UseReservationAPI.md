@@ -103,7 +103,30 @@ statistic의 경우 예약과 관련된 시작 및 종료 시간 및 간단한 �
 | 2 | <s>미사용</s> |
 | 3 | Live VOD |
 
-## 3. 예약 삭제
+
+
+## 4. 예약 수정 
+
+- Path : /svc/reservations/{reservationId}
+- Method : PATCH
+
+
+
+#### 필요 파라메터
+
+| 파라메터 이름 | 타입   | 필수 | 설명                                                         | 비고                                        |
+| :------------ | :----- | :--- | ------------------------------------------------------------ | ------------------------------------------- |
+| serviceId     | String | Y    | 발급된 서비스 아이디                                         |                                             |
+| userCode      | String | Y    | 방송할 그립사용자의 이용자코드                               |                                             |
+| title         | String | Y    | 예약 제목 (표현됨)                                           |                                             |
+| coverUrl      | String | Y    | 커버이미지 URL                                               | 다운로드 가능한 URL                         |
+| description   | String | N    | 예약에 대한 설명                                             |                                             |
+| start         | String | Y    | 방송 예상 시작 시간(해당 예약 시간내에 방송해야 해당 예약 URL에 노출됨 | yyyy-MM-dd HH:mm:ss                         |
+| end           | String | N    | 예약                                                         | yyyy-MM-dd HH:mm:ss, 기본 시작시간  + 1시간 |
+
+
+
+## 5. 예약 삭제
 
 - Path : /svc/reservations/{reservationId}
 - Method : DELETE
