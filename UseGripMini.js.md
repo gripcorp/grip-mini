@@ -34,9 +34,12 @@ var mini = GripMini({
 		couponId: "coupon001",  //클라이언트사쿠폰 아이디
 		type : "join",   // "join" : 입장쿠폰, "duration" : 누적시간 쿠폰
 		title : "라이브 입장 쿠폰",     //쿠폰 타이틀
-		desc : "2500원 할인",       //쿠폰 금액이나 설명을 위한 정보
+		price : "2500원 할인",       //쿠폰 금액이나 설명을 위한 정보
+		desc :"2만원 이상 사용가능",
 		duration : 600,     //누적시간 쿠폰 발급 시간, 초 단위
      	}]
+    
+    ,  excludeNoti : [6,7]	//좋아요, follow 노티 노출 제외
     });
 
 mini.on("productList", function(){
@@ -95,8 +98,24 @@ mini.resume();	//영상 다시 재생
 | muted           | Boolean | N        | 음소거 상태 재생 여부, 기본값 true     |
 | share           | Boolean | N        | 공유버튼 사용 여부, 기본값 true        |
 | messageCount    | Integer | N        | 메시지 유지수, 기본값 300, 최대 500    |
+| excludeNoti     | List    | N        | 라이브 노티 노출 제외 목록             |
 
 
+
+excludeNoti 지원 타입
+
+라이브 노티 제외용 값 설명
+
+| 정보         | 값   | 비고                      |
+| ------------ | ---- | ------------------------- |
+| NORMAL_INFO  | 0    | 기본 라이브와 관련된 정보 |
+| CONNECT_USER | 1    | 사용자 접속               |
+| CONCURRENT   | 2    | 누적사용자 수 (10명 단위) |
+| CART         | 3    | 장바구니 넣음             |
+| SOLDOUT      | 4    | 품절                      |
+| SOLDOUT_SOON | 5    | 품절 임박                 |
+| LIKE         | 6    | 좋아요 누적(5000 단위)    |
+| FOLLOW       | 7    | 팔로우                    |
 
 
 
@@ -128,7 +147,8 @@ type 은 float, top 이 존재하며 float는 우측 하단에 작은 버전 top
 | couponId   | String  | Y        | 인지 가능한 쿠폰 ID                        |
 | type       | String  | Y        | join : 진입 쿠폰, duration : 누적시청 쿠폰 |
 | title      | String  | Y        | 쿠폰명 예) 라이브 입장 쿠폰                |
-| desc       | String  | Y        | 금액이나 설명 정보 예) 2500원 할인         |
+| price      | String  | Y        | 금액이나 설명 정보 예) 2500원 할인         |
+| desc       | String  | Y        | 쿠폰 적용 정보  예) 2만원 이상 적용        |
 | duration   | Integer | N(Y)     | duration 타입 사용시 필수                  |
 
 
