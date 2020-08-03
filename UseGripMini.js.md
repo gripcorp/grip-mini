@@ -30,7 +30,7 @@ var mini = GripMini({
             "z-index" : 100
         }
     }
-	, coupon : [{
+	, coupons : [{
 		couponId: "coupon001",  //클라이언트사쿠폰 아이디
 		type : "join",   // "join" : 입장쿠폰, "duration" : 누적시간 쿠폰
 		title : "라이브 입장 쿠폰",     //쿠폰 타이틀
@@ -99,6 +99,7 @@ mini.resume();	//영상 다시 재생
 | share           | Boolean | N        | 공유버튼 사용 여부, 기본값 true        |
 | messageCount    | Integer | N        | 메시지 유지수, 기본값 300, 최대 500    |
 | excludeNoti     | List    | N        | 라이브 노티 노출 제외 목록             |
+| coupons     	  | List    | N        | 쿠폰 목록             |
 
 
 
