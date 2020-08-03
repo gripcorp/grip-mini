@@ -93,14 +93,12 @@ mini.resume();	//영상 다시 재생
 | confirmCellular | Boolean | N        | 3G/LTE 데이터 사용 확인 창 이용        |
 | productCount    | Integer | N (Y)    | **상품 목록 기능 사용시 필수**         |
 | z-index         | Integer | N        | 기본 10000                             |
-| coupon          | List    | N        | 쿠폰 데이터, 쿠폰 기능 사용시 필수     |
+| coupons          | List    | N        | 쿠폰 데이터, 쿠폰 기능 사용시 필수     |
 | floating        | Map     | N        | 플로팅 뷰 이용시 설정 , 하단 설명 참조 |
 | muted           | Boolean | N        | 음소거 상태 재생 여부, 기본값 true     |
 | share           | Boolean | N        | 공유버튼 사용 여부, 기본값 true        |
 | messageCount    | Integer | N        | 메시지 유지수, 기본값 300, 최대 500    |
 | excludeNoti     | List    | N        | 라이브 노티 노출 제외 목록             |
-| coupons     	  | List    | N        | 쿠폰 목록             |
-
 
 
 excludeNoti 지원 타입
