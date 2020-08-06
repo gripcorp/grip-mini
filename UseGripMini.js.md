@@ -98,7 +98,9 @@ mini.resume();	//영상 다시 재생
 | muted           | Boolean | N        | 음소거 상태 재생 여부, 기본값 true     |
 | share           | Boolean | N        | 공유버튼 사용 여부, 기본값 true        |
 | messageCount    | Integer | N        | 메시지 유지수, 기본값 300, 최대 500    |
-| excludeNoti     | List    | N        | 라이브 노티 노출 제외 목록             |
+| excludeNoti     | List    | N        | 라이브 노티 노출 제외 목록            |
+| useClose | Boolean | N | 기본값 false, 닫기 버튼 노출 여부 |
+
 
 
 excludeNoti 지원 타입
@@ -178,6 +180,7 @@ type 은 float, top 이 존재하며 float는 우측 하단에 작은 버전 top
 | share       | 공유버튼 누름      |                                     |
 | playend     | 재생이 종료됨(VOD) |                                     |
 | productList | 상품목록 요청      | 상품 목록 기능을 이용할 때 필수기능 |
+| close       | close버튼 누름     |                                     |
 
 
 
