@@ -100,6 +100,8 @@ mini.resume();	//영상 다시 재생
 | messageCount    | Integer | N        | 메시지 유지수, 기본값 300, 최대 500    |
 | excludeNoti     | List    | N        | 라이브 노티 노출 제외 목록            |
 | useClose | Boolean | N | 기본값 false, 닫기 버튼 노출 여부 |
+| useFollow | Boolean | N | 팔로우 기능 |
+| followed | Boolean | N | useFollow 와 연계하여 이전의 follow여부 |
 
 
 
@@ -171,16 +173,20 @@ type 은 float, top 이 존재하며 float는 우측 하단에 작은 버전 top
 
 콜백에서 false를 리턴하는경우 기본 동작이 수행됩니다.
 
-| 콜백이름    | 목적               | 비고                                |
-| ----------- | ------------------ | ----------------------------------- |
-| needLogin   | 로그인 요청        |                                     |
-| product     | 상품 클릭          |                                     |
-| cart        | 장바구니 클릭      |                                     |
-| coupon      | 쿠폰 받음          |                                     |
-| share       | 공유버튼 누름      |                                     |
-| playend     | 재생이 종료됨(VOD) |                                     |
-| productList | 상품목록 요청      | 상품 목록 기능을 이용할 때 필수기능 |
-| close       | close버튼 누름     |                                     |
+| 콜백이름    | 목적                                | 비고                                |
+| ----------- | ----------------------------------- | ----------------------------------- |
+| needLogin   | 로그인 요청                         |                                     |
+| product     | 상품 클릭                           |                                     |
+| cart        | 장바구니 클릭                       |                                     |
+| coupon      | 쿠폰 받음                           |                                     |
+| share       | 공유버튼 누름                       |                                     |
+| playend     | 재생이 종료됨(VOD)                  |                                     |
+| productList | 상품목록 요청                       | 상품 목록 기능을 이용할 때 필수기능 |
+| close       | close버튼 누름                      |                                     |
+| follow      | follow 버튼 누름                    | ownerId 가 전달됨                   |
+| tag         | 클릭 action 들에 대한 동작 tag 전달 | 목록은 하단 참조                    |
+
+
 
 
 
@@ -275,4 +281,37 @@ mini.on("productList", function(){
 | salePrice     | Integer | N        | 할인가격 (없으면 미노출)                                    |
 | stock         | Integer | N        | 존재하는경우 0의값은 soldout처리, 없으면 soldout 처리 못함  |
 | soldout       | Boolean | N        | 재고가 0보다 크더라고 soldout 이 존재하고 true라면 품절표시 |
+
+
+
+
+
+###### Tag 목록
+
+| tag                  | 비고                        |
+| -------------------- | --------------------------- |
+| coupon.detail        | 우상단 쿠폰 클릭            |
+| like.click           | 좋아요 클릭                 |
+| message.send         | 메시지 전송                 |
+| message.input.blur   | 입력창에서 벗어남           |
+| message.input.click  | 입력창 클릭                 |
+| message.input.focus  | 입력창에 포커스             |
+| store.click          | 상점아이콘 클릭             |
+| store.close          | 상품목록 닫기 클릭          |
+| product.cart.click   | 상품목록-카트 클릭          |
+| product.click        | 상품목록-상품 클릭          |
+| close                | 닫기 기능 클릭              |
+| vidoe.play.full      | 전체보기 클릭               |
+| vidoe.play.highlight | 하이라이트보기 클릭         |
+| sound.mute.toggle    | 음소거 버튼 클릭            |
+| share                | 공유하기 클릭               |
+| follow               | 팔로우 버튼 클릭            |
+| video.seek           | 영상 시간 seeking           |
+| video.pause          | 영상 일시 정지 클릭         |
+| video.resume         | 영상 재생 클릭              |
+| mini.click           | floating 미니 뷰 클릭       |
+| mini.close           | floating 미니 뷰 닫기  클릭 |
+| noti.more            | 공지사항 더보기 클릭        |
+
+
 
