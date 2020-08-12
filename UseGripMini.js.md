@@ -27,7 +27,8 @@ var mini = GripMini({
             height: 150,
             bottom : 100,
             right : 10,
-            "z-index" : 100
+            "z-index" : 100,
+            useClose : true
         }
     }
 	, coupons : [{
@@ -132,14 +133,15 @@ type 은 float, top 이 존재하며 float는 우측 하단에 작은 버전 top
 
 
 
-| 옵션명  | 타입    | 비고                                                    |
-| ------- | ------- | ------------------------------------------------------- |
-| width   | Integer | float의 작은 화면의 넓이                                |
-| height  | Integer | float의 작은 화면의 높이                                |
-| bottom  | Integer | float의 하단 여백                                       |
-| right   | Integer | float의 우측 여백                                       |
-| height  | Integer | top의 높이                                              |
-| z-index | Integer | z-index값, 없는경우 mini의 z-index값 사용, 기본값 10000 |
+| 옵션명   | 타입    | 비고                                                    |
+| -------- | ------- | ------------------------------------------------------- |
+| width    | Integer | float의 작은 화면의 넓이                                |
+| height   | Integer | float의 작은 화면의 높이                                |
+| bottom   | Integer | float의 하단 여백                                       |
+| right    | Integer | float의 우측 여백                                       |
+| height   | Integer | top의 높이                                              |
+| z-index  | Integer | z-index값, 없는경우 mini의 z-index값 사용, 기본값 10000 |
+| useClose | Boolean | 닫기 버튼 여부 , 기본값 true                            |
 
 
 
