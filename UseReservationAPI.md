@@ -3,6 +3,14 @@
 라이브 예약에 대한 추가, 삭제, 조회 기능을 제공한다.
 HMAC 형태의 api 인증을 진행하며 
 
+
+
+예제 파일 참조 
+
+[GripMiniReservationReservation.java]: ./example/GripMiniReservationExample.java	"예제 파일"
+
+
+
 ## 1. Live 예약하기 
 
 - Path : /svc/reservations
@@ -143,6 +151,52 @@ reservationId를 이용하여 예약 삭제(취소)
 | reservationId | String        | Y    | 예약 ID| Path에 존재함 |
 | serviceId     | String        | Y    | 발급된 서비스 아이디| |
 | userCode      | String        | Y    | 그립사용자의 이용자코드 | |
+
+
+
+## 6. 예약 컨텐츠 조회
+
+- Path : /svc/reservations/{reservationId}/content
+- Method : GET
+
+### 목적
+
+```
+reservationId와 연결된 content 정보 조회
+```
+
+
+| 파라메터 이름 | 타입   | 필수 | 설명                 | 비고          |
+| :------------ | :----- | :--- | -------------------- | ------------- |
+| reservationId | String | Y    | 예약 ID              | Path에 존재함 |
+| serviceId     | String | Y    | 발급된 서비스 아이디 |               |
+
+
+
+#### 컨텐츠 타입
+
+| 값   | 설명                   | 비고 |
+| :--- | ---------------------- | ---- |
+| 3    | 라이브 방송            |      |
+| 4    | 라이브로 부터 나온 VOD |      |
+
+### 응답
+
+```json
+{
+    "reservationId": "7wv3y1q88z109rnk",
+    "embedUrl": "http://play.grip.show/embed/r/7wv3y1q88z109rndk",
+    "contents": [
+      {
+        "contentId": "z3xye69d2",
+        "playbackUrl": "https://e-live-kr.grip.show/live/ngrp:l392ovre1g3_all/playlist.m3u8",
+        "contentType": 3	//상단 표 참조 3 : live, 4 : vod
+       }
+    ],
+}
+```
+
+
 
 
 
