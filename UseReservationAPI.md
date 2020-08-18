@@ -3,10 +3,6 @@
 라이브 예약에 대한 추가, 삭제, 조회 기능을 제공한다.
 HMAC 형태의 api 인증을 진행하며 
 
-
-
-예제 파일 참조 
-
 [예제 파일 열기](./example/GripMiniReservationExample.java)
 
 
