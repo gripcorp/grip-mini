@@ -7,7 +7,7 @@ HMAC 형태의 api 인증을 진행하며
 
 예제 파일 참조 
 
-[GripMiniReservationReservation.java]: ./example/GripMiniReservationExample.java	"예제 파일"
+[예제 파일 열기](./example/GripMiniReservationExample.java)
 
 
 
