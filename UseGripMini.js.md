@@ -175,18 +175,19 @@ type 은 float, top 이 존재하며 float는 우측 하단에 작은 버전 top
 
 콜백에서 false를 리턴하는경우 기본 동작이 수행됩니다.
 
-| 콜백이름    | 목적                                | 비고                                |
-| ----------- | ----------------------------------- | ----------------------------------- |
-| needLogin   | 로그인 요청                         |                                     |
-| product     | 상품 클릭                           |                                     |
-| cart        | 장바구니 클릭                       |                                     |
-| coupon      | 쿠폰 받음                           |                                     |
-| share       | 공유버튼 누름                       |                                     |
-| playend     | 재생이 종료됨(VOD)                  |                                     |
-| productList | 상품목록 요청                       | 상품 목록 기능을 이용할 때 필수기능 |
-| close       | close버튼 누름                      |                                     |
-| follow      | follow 버튼 누름                    | ownerId 가 전달됨                   |
-| tag         | 클릭 action 들에 대한 동작 tag 전달 | 목록은 하단 참조                    |
+| 콜백이름         | 목적                                | 비고                                                         |
+| ---------------- | ----------------------------------- | ------------------------------------------------------------ |
+| needLogin        | 로그인 요청                         |                                                              |
+| product          | 상품 클릭                           |                                                              |
+| cart             | 장바구니 클릭                       |                                                              |
+| coupon           | 쿠폰 받음                           | 비동기 호출시 return없이 응답후 sendCouponResult 이용        |
+| share            | 공유버튼 누름                       |                                                              |
+| playend          | 재생이 종료됨(VOD)                  |                                                              |
+| productList      | 상품목록 요청                       | 상품 목록 기능을 이용할 때 필수기능                          |
+| close            | close버튼 누름                      |                                                              |
+| follow           | follow 버튼 누름                    | ownerId 가 전달됨                                            |
+| tag              | 클릭 action 들에 대한 동작 tag 전달 | 목록은 하단 참조                                             |
+| sendCouponResult | 쿠폰 수령 여부 비동기 결과 전달     | sendCouponResult(success, couponInfo) 식의 호출, 하단 예제 참조 |
 
 
 
@@ -211,7 +212,12 @@ mini.on("cart", function(product){ //product : 클릭한 상품 정보
 mini.on("coupon", function(coupon){ //coupon : 전달한 쿠폰의 정보
     //TODO : 해당 사용자에게 사이트의 쿠폰을 발행한다.
     return true;
+    // 쿠폰 발급에 오래 걸리는 경우 비동기 호출
 });
+    
+//쿠폰발급 성공 처리
+mini.sendCouponResult(true, coupon);
+ 
     
 mini.on("needLogin", function(){
     //TODO : 로그인 유도용 페이지로 이동한다.
