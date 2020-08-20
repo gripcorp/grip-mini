@@ -53,8 +53,42 @@ HMAC 형태의 api 인증을 진행하며
 | start         | String        | Y    | 조회 시작 시간  | yyyy-MM-dd HH:mm:ss |
 | end           | String        | Y    | 조회 종료 시간  | yyyy-MM-dd HH:mm:ss |
 
+### 응답
+
+```json
+[	//List 응답
+	{
+      "userCode": "geAda33",
+      "embedUrl": "https://play.grip.show/embed/Dfa3213E23Dfa3213E23",
+      "reservationId": "Dfa3213E23",
+      "title":"예약 타이틀",
+      "description": "예약 설명",
+      "coverUrl":"https://play.grip.show/images/test.jpg",
+      "start" : "2019-10-21 14:30:00",
+      "end" : "2019-10-21 15:30:00",
+      "state" : 0,	
+      "createAt": "2019-10-21T03:20:51.623Z"
+    },
+    {
+      "userCode": "geAda33",
+      "embedUrl": "https://play.grip.show/embed/Dfa3213E23Dfa3213E23",
+      "reservationId": "Dfa3213E23",
+      "title":"예약 타이틀2",
+      "description": "예약 설명2",
+      "coverUrl":"https://play.grip.show/images/test.jpg",
+      "start" : "2019-10-22 14:30:00",
+      "end" : "2019-10-22 15:30:00",
+      "state" : 0,	
+      "createAt": "2019-10-22T03:20:51.623Z"
+    },
+]
+
+```
+
+
 
 ## 3. 예약 조회
+
 - Path : /svc/reservations/{reservationId}
 - Method : GET
 
