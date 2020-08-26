@@ -52,6 +52,7 @@ HMAC 형태의 api 인증을 진행하며
 | userCode      | String        | Y    | 조회할 그립사용자의 이용자코드 | |
 | start         | String        | Y    | 조회 시작 시간  | yyyy-MM-dd HH:mm:ss |
 | end           | String        | Y    | 조회 종료 시간  | yyyy-MM-dd HH:mm:ss |
+| statistics | Boolean | N | 목록 조회시에 통계정보 함께 요청 | 기본값 false |
 
 ### 응답
 
@@ -79,7 +80,16 @@ HMAC 형태의 api 인증을 진행하며
       "start" : "2019-10-22 14:30:00",
       "end" : "2019-10-22 15:30:00",
       "state" : 0,	
-      "createAt": "2019-10-22T03:20:51.623Z"
+       "statistics": {
+           "contentIds": [
+               "Dfa3213E23"
+           ],
+           "accUserCount": 2,
+           "accViewCount" : 20,
+           "accDuration" : 349000,
+           "startedAt": "2019-10-21T03:20:51.623Z",
+           "endedAt": "2019-10-21T03:20:51.623Z"
+       },
     },
 ]
 
@@ -228,6 +238,27 @@ reservationId와 연결된 content 정보 조회
 
 
 
+## 7. 예약 라이브에 품절 노티 보내기
+
+- Path : /svc/reservations/{reservationId}/noti
+- Method : PUT
+
+### 목적
+
+```
+reservationId와 연결된 라이브에 품절, 품절 임박 메시지 보내기
+```
+
+
+| 파라메터 이름 | 타입    | 필수 | 설명                          | 비고          |
+| :------------ | :------ | :--- | ----------------------------- | ------------- |
+| reservationId | String  | Y    | 예약 ID                       | Path에 존재함 |
+| serviceId     | String  | Y    | 발급된 서비스 아이디          |               |
+| productName   | String  | Y    | 상품 이름                     |               |
+| soldout       | Boolean | N    | false : 품절임박, true : 품절 | 기본값 false  |
+
+
+
 
 
 #### # errorCode 값
@@ -239,7 +270,11 @@ reservationId와 연결된 content 정보 조회
 | P003      | 유효하지 않은 예약Id           |      |
 | P004      | 유효하지 않은 시작시간         |      |
 | P005      | 유효하지 않은 종료시간         |      |
+| P006      | 유효하지 않은 커버 이미지      |      |
+| P007      | 유효하지 않은 상품명           |      |
 | E001      | 해당 시간에 예약이 이미 존재함 |      |
+| E002      | 최대 조회 기간을 초과했습니다. |      |
+| E003      | 라이브가 존재하지 않습니다.    |      |
 
 
 
