@@ -10,7 +10,7 @@
 
 ```objective-c
 [self.webview setMediaPlaybackRequiresUserAction:**NO**];
-**webview.allowsInlineMediaPlayback** = true
+webview.allowsInlineMediaPlayback = true
 
 ```
 
