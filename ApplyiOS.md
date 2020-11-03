@@ -9,7 +9,9 @@
 
 
 ```objective-c
-[self.webvie setMediaPlaybackRequiresUserAction:**NO**];
+[self.webview setMediaPlaybackRequiresUserAction:**NO**];
+**webview.allowsInlineMediaPlayback** = true
+
 ```
 
 
