@@ -97,7 +97,7 @@ mini.resume();	//영상 다시 재생
 | coupons          | List    | N        | 쿠폰 데이터, 쿠폰 기능 사용시 필수     |
 | floating        | Map     | N        | 플로팅 뷰 이용시 설정 , 하단 설명 참조 |
 | muted           | Boolean | N        | 음소거 상태 재생 여부, 기본값 true     |
-| share           | Boolean | N        | 공유버튼 사용 여부, 기본값 true        |
+| useShare        | Boolean | N        | 공유버튼 사용 여부, 기본값 true        |
 | messageCount    | Integer | N        | 메시지 유지수, 기본값 300, 최대 500    |
 | excludeNoti     | List    | N        | 라이브 노티 노출 제외 목록            |
 | useClose | Boolean | N | 기본값 false, 닫기 버튼 노출 여부 |
